@@ -7,12 +7,12 @@ import static org.junit.Assert.*;
 
 public class TrainControllerImplTest {
 
-    TrainControllerImpl tc;
+    TrainControllerImpl tc= new TrainControllerImpl();
 
     @Test
     public void followSpeed() {
         tc.followSpeed();
 
-       assertNull(tc.refspeed);
+       assertNotNull(tc.refspeed);
     }
 }

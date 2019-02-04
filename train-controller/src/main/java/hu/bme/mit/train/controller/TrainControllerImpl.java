@@ -11,7 +11,7 @@ public class TrainControllerImpl implements TrainController {
 	private int speedLimit = 0;
 
 	public Table<Integer, Integer, Integer> refspeed
-			= null;
+			= HashBasedTable.create();
 
 	public Table<String, String, Integer> time
 			= HashBasedTable.create();
@@ -33,7 +33,7 @@ public class TrainControllerImpl implements TrainController {
             }
 		}
 
-	//	refspeed.put(0,0,5);
+		refspeed.put(0,0,5);
 		time.put("a","a",5);
 		joystikpos.put("a","a",5);
 
