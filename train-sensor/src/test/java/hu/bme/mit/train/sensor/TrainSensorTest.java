@@ -15,7 +15,10 @@ public class TrainSensorTest {
     @Test
     public void ThisIsAnExampleTestStub() {
 
-    TrainSensorImpl tsi=new TrainSensorImpl();
+	private TrainController controller;
+	private TrainUser user;
+
+    TrainSensorImpl tsi=new TrainSensorImpl(controller, user);
 
 	assertEquals(5,tsi.getSpeedLimit(), "default value must be 5");    
 
