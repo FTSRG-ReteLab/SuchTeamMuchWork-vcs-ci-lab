@@ -1,5 +1,7 @@
 package hu.bme.mit.train.controller;
 
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
 import hu.bme.mit.train.interfaces.TrainController;
 
 public class TrainControllerImpl implements TrainController {
@@ -7,6 +9,17 @@ public class TrainControllerImpl implements TrainController {
 	private int step = 0;
 	private int referenceSpeed = 0;
 	private int speedLimit = 0;
+
+	public Table<Integer, Integer, Integer> refspeed
+			= HashBasedTable.create();
+
+	public Table<String, String, Integer> time
+			= HashBasedTable.create();
+
+
+	public Table<String, String, Integer> joystikpos
+			= HashBasedTable.create();
+
 
 	@Override
 	public void followSpeed() {
@@ -20,7 +33,14 @@ public class TrainControllerImpl implements TrainController {
             }
 		}
 
+	//	refspeed.put(0,0,5);
+		time.put("a","a",5);
+		joystikpos.put("a","a",5);
+
 		enforceSpeedLimit();
+
+
+
 	}
 
 	@Override
