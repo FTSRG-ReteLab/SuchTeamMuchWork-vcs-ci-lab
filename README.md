@@ -20,7 +20,7 @@ To compile and run tests also execute:
 ./gradlew test
 ```
 
-## Overview
+ Overview
 
 ### Structure
 
