@@ -11,7 +11,7 @@ public class TrainControllerImpl implements TrainController {
 	private int speedLimit = 0;
 
 	public Table<Integer, Integer, Integer> refspeed
-			= HashBasedTable.create();
+			= null;
 
 	public Table<String, String, Integer> time
 			= HashBasedTable.create();
