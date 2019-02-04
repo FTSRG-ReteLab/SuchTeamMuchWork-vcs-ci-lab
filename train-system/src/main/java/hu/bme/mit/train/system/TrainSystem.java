@@ -12,6 +12,7 @@ public class TrainSystem {
 	private TrainController controller = new TrainControllerImpl();
 	private TrainUser user = new TrainUserImpl(controller);
 	private TrainSensor sensor = new TrainSensorImpl(controller, user);
+	private int Meaning = 42;	
 
 	public TrainController getController() {
 		return controller;
