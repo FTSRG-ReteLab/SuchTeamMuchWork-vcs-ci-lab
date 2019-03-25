@@ -80,7 +80,7 @@ public class TrainControllerImpl implements TrainController {
 			public void run() {
 				enforceSpeedLimit();
 			}
-		}, 60*1000, 60*1000);
+		}, 2*60*1000, 2*60*1000);
 
 
 
