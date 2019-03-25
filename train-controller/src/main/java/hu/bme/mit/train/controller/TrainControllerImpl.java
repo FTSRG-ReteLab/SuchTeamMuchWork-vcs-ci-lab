@@ -3,12 +3,15 @@ package hu.bme.mit.train.controller;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import hu.bme.mit.train.interfaces.TrainController;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class TrainControllerImpl implements TrainController {
 
 	private int step = 0;
 	private int referenceSpeed = 0;
 	private int speedLimit = 0;
+	private Timer timer = new Timer();
 
 	public Table<Integer, Integer, Integer> refspeed
 			= HashBasedTable.create();
@@ -33,6 +36,8 @@ public class TrainControllerImpl implements TrainController {
             }
 		}
 
+
+		//
 		refspeed.put(0,0,5);
 		time.put("a","a",5);
 		joystikpos.put("a","a",5);
@@ -59,11 +64,28 @@ public class TrainControllerImpl implements TrainController {
 		if (referenceSpeed > speedLimit) {
 			referenceSpeed = speedLimit;
 		}
+		else{
+
+			followSpeed();
+		}
 	}
 
 	@Override
 	public void setJoystickPosition(int joystickPosition) {
-		this.step = joystickPosition;		
+		this.step = joystickPosition;
+
+
+		timer.scheduleAtFixedRate(new TimerTask() {
+			@Override
+			public void run() {
+				enforceSpeedLimit();
+			}
+		}, 30*1000, 30*1000);
+
+
+
+
+
 	}
 
 }
