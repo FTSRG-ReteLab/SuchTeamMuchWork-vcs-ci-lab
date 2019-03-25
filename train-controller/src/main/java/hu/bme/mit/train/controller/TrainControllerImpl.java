@@ -38,15 +38,16 @@ public class TrainControllerImpl implements TrainController {
 
 
 		//
-		refspeed.put(0,0,5);
-		time.put("a","a",5);
-		joystikpos.put("a","a",5);
+//		refspeed.put(0,0,5);
+//		time.put("a","a",5);
+//		joystikpos.put("a","a",5);
 
 		enforceSpeedLimit();
 
 
 
 	}
+
 
 	@Override
 	public int getReferenceSpeed() {
@@ -64,10 +65,7 @@ public class TrainControllerImpl implements TrainController {
 		if (referenceSpeed > speedLimit) {
 			referenceSpeed = speedLimit;
 		}
-		else{
 
-			followSpeed();
-		}
 	}
 
 	@Override
@@ -78,14 +76,10 @@ public class TrainControllerImpl implements TrainController {
 		timer.scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {
-				enforceSpeedLimit();
+			followSpeed();
+		
 			}
-		}, 30*1000, 30*1000);
-
-
-
-
-
+		},(long) 30*1000,(long) 30*1000);
 	}
 
 }
