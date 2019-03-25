@@ -4,11 +4,16 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import hu.bme.mit.train.interfaces.TrainController;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+
 public class TrainControllerImpl implements TrainController {
 
 	private int step = 0;
 	private int referenceSpeed = 0;
 	private int speedLimit = 0;
+	private Timer timer = new Timer();
 
 	public Table<Integer, Integer, Integer> refspeed
 			= HashBasedTable.create();
@@ -63,7 +68,15 @@ public class TrainControllerImpl implements TrainController {
 
 	@Override
 	public void setJoystickPosition(int joystickPosition) {
-		this.step = joystickPosition;		
+		this.step = joystickPosition;
+
+		timer.scheduleAtFixedRate(new TimerTask() {
+			@Override
+			public void run() {
+				enforceSpeedLimit();
+			}
+		}, 2*60*1000, 2*60*1000);
+
 	}
 
 }
